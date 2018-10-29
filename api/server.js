@@ -66,6 +66,24 @@ server.post('/api/notes', (req, res) => {
     .then(note => {
       res.status(201).json({ success: `Note has been created, the id is: ${note}`});
     })
-})
+    .catch(err => res.status(500).json(err));
+});
+
+server.put('/api/notes/:id', (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+
+  db('notes').where({ id }).update(changes)
+    .then(response => {
+
+      if (response === 1) {
+        res.status(200).json({ success: 'Updated successfully! Keep studying!' });
+      } else {
+        res.status(404).json({ missing: 'Could not find a note by that ID' });
+      }
+
+    })
+    .catch(err => res.status(500).json({ error: 'An error has occurred with the server, please try again' }, err));
+});
 
 module.exports = server;
