@@ -8,7 +8,6 @@ const db = knex(knexConfig.development);
 
 /*
 TODO:
-- Edit an existing note.
 - Delete an existing note.
 - Modify your front-end so that it uses your newly created Web API.
 */
@@ -18,6 +17,7 @@ DONE:
 - Display a list of notes.
 - View an existing note.
 - Create a note with a title and content.
+- Edit an existing note.
 */
 
 server.get('/', (req, res) => {
@@ -86,4 +86,17 @@ server.put('/api/notes/:id', (req, res) => {
     .catch(err => res.status(500).json({ error: 'An error has occurred with the server, please try again' }, err));
 });
 
+
+server.delete('/api/notes/:id', (req, res) => {
+  const { id } = req.params;
+
+  db('notes').where({ id }).del()
+    .then(response => {
+      if (response === 0) {
+        res.status(404).json({ missing: 'Could not find a note by that ID' })
+      }
+      res.status(200).json({ success: 'Note has been successfully deleted, don\'t worry, we won\'t tell mom!' });
+    })
+    .catch(err => res.status(500).json({ error: 'An error has occurred with the server, please try again' }, err));
+})
 module.exports = server;
