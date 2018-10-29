@@ -1,14 +1,15 @@
 const express = require('express');
 const server = express();
-server.use(express.json());
 const knex = require('knex');
+const cors = require('cors');
+server.use(cors());
+server.use(express.json());
 
 const knexConfig = require('../knexfile.js');
 const db = knex(knexConfig.development);
 
 /*
 TODO:
-- Delete an existing note.
 - Modify your front-end so that it uses your newly created Web API.
 */
 
@@ -18,6 +19,7 @@ DONE:
 - View an existing note.
 - Create a note with a title and content.
 - Edit an existing note.
+- Delete an existing note.
 */
 
 server.get('/', (req, res) => {
