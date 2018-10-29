@@ -8,8 +8,6 @@ const db = knex(knexConfig.development);
 
 /*
 TODO:
-- Create a note with a title and content.
-- View an existing note.
 - Edit an existing note.
 - Delete an existing note.
 - Modify your front-end so that it uses your newly created Web API.
@@ -18,6 +16,8 @@ TODO:
 /*
 DONE:
 - Display a list of notes.
+- View an existing note.
+- Create a note with a title and content.
 */
 
 server.get('/', (req, res) => {
@@ -54,5 +54,18 @@ server.get('/api/notes/:id', (req, res) => {
     .catch(err => res.status(500).json({ error: 'An error occurred with the server when making the request, please try again' }, err));
 });
 
+server.post('/api/notes', (req, res) => {
+  let { title, content } = req.body;
+
+  if(!req.body.title || !req.body.content || req.body.title.length < 1 || req.body.content.length < 1 ) {
+    return res.status(422).json({ fillError: 'Please enter a title and content' });            
+  }
+
+  db.insert({ title, content })
+    .into('notes')
+    .then(note => {
+      res.status(201).json({ success: `Note has been created, the id is: ${note}`});
+    })
+})
 
 module.exports = server;
