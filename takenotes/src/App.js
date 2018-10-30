@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { NavLink, Route } from 'react-router-dom';
+
 import { HomeView } from './views/HomeView';
-import { NotesListView } from './views/NotesListView';
-import { AddNoteView } from './views/AddNoteView';
+import NotesListView from './views/NotesListView';
+import AddNoteView from './views/AddNoteView';
 import { SignUpView } from './views/SignUpView';
 import { LoginView } from './views/LoginView';
 
