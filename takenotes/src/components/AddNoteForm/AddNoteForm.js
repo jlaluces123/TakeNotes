@@ -28,7 +28,7 @@ export const AddNoteForm = props => {
         <textarea  
           className='note-body-input'        
           value={props.note.content}
-          name='note content'          
+          name='content'          
           placeholder='Note Content'
           rows='50'
           cols='70'
