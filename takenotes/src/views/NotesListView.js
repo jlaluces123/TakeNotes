@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NotesList } from '../components/NotesList/NotesList';
 import { fetchNotes } from '../store/actions';
+import './loading.css';
 
 class NotesListView extends React.Component {
   state = {
@@ -21,7 +22,7 @@ class NotesListView extends React.Component {
   };
 
   render() {
-    return this.state.notesArray.length > 0 ? <NotesList {...this.props} notes={this.state.notesArray} /> : <div>loading...</div> ;    
+    return this.state.notesArray.length > 0 ? <NotesList {...this.props} notes={this.state.notesArray} /> : <div className='loading'>loading...</div> ;    
   }
 }
 

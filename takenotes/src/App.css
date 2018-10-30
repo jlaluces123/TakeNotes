@@ -83,13 +83,60 @@
 
 .navbar {
   display: flex;
+  height: 100px;
+  background: lightcoral;
 }
 
 .navbar-list {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  padding-right: 50px;
+  padding: 0;
   width: 100%;
+  margin: 0 15%;
   list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: black;  
+}
+
+.nav-link:hover {
+  background-color: #E6EBE0;
+  transition: 0.2s;
+  border-radius: 10px;
+  padding: 8px 0 0 0;
+}
+
+.home-button {
+	background: url('./font-awesome-sheet.svg') no-repeat -94px -46px;
+	width: 29px;
+	height: 24px;  
+}
+
+.notes-button {
+  background: url('./font-awesome-sheet.svg') no-repeat -152px -381px;
+	width: 32px;
+	height: 33px;
+}
+
+.add-button {
+  background: url('./font-awesome-sheet.svg') no-repeat -354px -119px;
+	width: 32px;
+	height: 26px;
+}
+
+.login {
+  background: url('./font-awesome-sheet.svg') no-repeat -329px -6px;
+	width: 26px;
+	height: 28px;
+}
+
+.sign-up {
+  background: url('./font-awesome-sheet.svg') no-repeat -760px -343px;
+	width: 35px;
+	height: 33px;
 }

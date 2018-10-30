@@ -11,7 +11,7 @@ export const Note = props => {
 
   const handleDelete = () => {
     props.handleDeleteNote(note.id);
-    props.history.push('/notes');
+    props.history.push('/note-form');
   }
 
   return (

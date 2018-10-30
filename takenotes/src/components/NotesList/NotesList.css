@@ -1,0 +1,28 @@
+.notes-list-wrap {
+  background: #F5CAC3;
+}
+
+h4 {
+  margin: 0;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.notes-map {
+  height: 543px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.note-box {
+  width: 500px;
+}
+
+.note-body {
+  width: 500px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -1,10 +1,11 @@
 import React from 'react';
+import './NotesList.css';
 
 export const NotesList = props => {
   console.log(props);
   return (
     <div className='notes-list-wrap'>
-      <h4>Lets get studying!</h4>
+      <h4>Notes</h4>
       <div className='notes-map'>
       {props.notes.map(note => (
         <div className='note-box' key={note.id}>

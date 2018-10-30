@@ -20,23 +20,11 @@ class App extends Component {
      <div className='App'>      
       <div className='navbar'>
         <ul className='navbar-list'>
-
-          <li className='nav-button'>
-            <NavLink exact to='/'>Home</NavLink>
-          </li>
-          <li className='nav-button'>
-            <NavLink exact to='/notes'>View Your Notes</NavLink>
-          </li>
-          <li className='nav-button'>
-            <NavLink exact to='/note-form'>+ Create New Note</NavLink>
-          </li>
-          <li className='nav-button'>
-            <NavLink exact to='/sign-up'>Sign Up</NavLink>
-          </li>
-          <li className='nav-button'>
-            <NavLink exact to='/login'>Log In</NavLink>
-          </li>
-
+          <NavLink exact to='/' className='nav-link home-button'></NavLink>                    
+          <NavLink exact to='/notes' className='nav-link notes-button'></NavLink>                    
+          <NavLink exact to='/note-form' className='nav-link add-button'></NavLink>                    
+          <NavLink exact to='/sign-up' className='nav-link sign-up'></NavLink>                    
+          <NavLink exact to='/login' className='nav-link login'></NavLink>          
         </ul>
       </div>
       <Route exact path='/' component={HomeView} />
