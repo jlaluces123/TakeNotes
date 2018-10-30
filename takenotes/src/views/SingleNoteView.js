@@ -17,6 +17,7 @@ class SingleNoteView extends React.Component {
     // this.props.deleteNote(noteId)
     // make deleteNote inside actions
     console.log('firing inside handleDeleteNote', noteId);
+    console.log(this.props, 'this.props');
     this.props.deleteNote(noteId);
   }
 
@@ -31,6 +32,7 @@ class SingleNoteView extends React.Component {
   }
 
   render() {
+    console.log('notesList', this.props.notesList)
     return (
       <Note
         {...this.props}

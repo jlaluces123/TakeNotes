@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup';
 
 export const Note = props => {
   const note = props.notesList.find(
-    note => note.id === props.match.params.noteId
+    note => note.id === Number(props.match.params.noteId)
   );
   console.log('note', note);
   console.log('props', props);

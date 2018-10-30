@@ -14,6 +14,7 @@ class NotesListView extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log(this.props.notesList, 'notesList props')
     if (this.props.notesList !== prevProps.notesList) {
       this.setState({ notesArray: this.props.notesList })
     }

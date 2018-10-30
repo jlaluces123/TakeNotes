@@ -1,6 +1,7 @@
 import React from 'react';
 
 export const NotesList = props => {
+  console.log(props);
   return (
     <div className='notes-list-wrap'>
       <h4>Lets get studying!</h4>
