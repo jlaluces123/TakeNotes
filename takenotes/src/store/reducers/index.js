@@ -12,6 +12,10 @@ import {
   START_UPDATE_NOTE,
   SUCCESS_UPDATE_NOTE,
   FAILURE_UPDATE_NOTE,
+
+  START_DELETE_NOTE,
+  SUCCESS_DELETE_NOTE,
+  FAILURE_DELETE_NOTE,
 } from '../actions/index.js';
 
 const initialState = {
@@ -71,6 +75,25 @@ export const notesReducer = (state = initialState, action) => {
     case FAILURE_UPDATE_NOTE:
       console.log(action.payload)
       return {...state, isUpdating: false, error: action.payload  };
+
+      case START_DELETE_NOTE:
+      return {...state, deletingNote: true };
+  
+    case SUCCESS_DELETE_NOTE:
+      let indexDelete = state.notes.findIndex(note => {      
+        return note._id === action.payload
+      })
+  
+      let newNotesDelete = [
+        ...state.notes.slice(0, indexDelete),      
+        ...state.notes.slice(indexDelete + 1)
+      ]
+  
+      return {...state, deletingNote: false, notes: newNotesDelete };
+  
+    case FAILURE_DELETE_NOTE:
+      console.log(action.payload)
+      return {...state, deletingNote: false, error: action.payload  };
 
     default:
       return state;

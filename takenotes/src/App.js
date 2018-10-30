@@ -7,6 +7,7 @@ import NotesListView from './views/NotesListView';
 import AddNoteView from './views/AddNoteView';
 import { SignUpView } from './views/SignUpView';
 import { LoginView } from './views/LoginView';
+import SingleNoteView from './views/SingleNoteView';
 
 
 
@@ -40,6 +41,7 @@ class App extends Component {
       </div>
       <Route exact path='/' component={HomeView} />
       <Route exact path='/notes' component={NotesListView} />
+      <Route path='/notes/:noteId' component={SingleNoteView} />
       <Route exact path='/note-form' component={AddNoteView} />
       <Route exact path='/sign-up' component={SignUpView} />
       <Route exact path='/login' component={LoginView} />

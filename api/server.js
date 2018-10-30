@@ -2,31 +2,117 @@ const express = require('express');
 const server = express();
 const knex = require('knex');
 const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 server.use(cors());
 server.use(express.json());
 
 const knexConfig = require('../knexfile.js');
 const db = knex(knexConfig.development);
 
-/*
-TODO:
-- Modify your front-end so that it uses your newly created Web API.
-*/
+const jwtSecret = 'nobody tosses a dwarf!';
+function generateToken(user) {
+  const jwtPayload = {
+    ...user,
+    hello: 'user',
+    roles: 'admin'
+  };
+  const jwtOptions = {
+    expiresIn: '10m'
+  };
+  return jwt.sign(jwtPayload, jwtSecret, jwtOptions);
+};
 
-/*
-DONE:
-- Display a list of notes.
-- View an existing note.
-- Create a note with a title and content.
-- Edit an existing note.
-- Delete an existing note.
-*/
+function protected(req, res, next) {
+  // auth tokens are usually sent as part of the header, not body
+  // if user is not logged in, respond with correct httpcode and message...
+  const token = req.headers.authorization;
+
+  if (token) 
+  {
+
+    jwt.verify(token, jwtSecret, (err, decodedToken) => {
+      if (err) {
+        res.status(401).json({ message: 'You shall not pass!' });
+      } else {
+        req.decodedToken = decodedToken; 
+        console.log(req.decodedToken, 'decodedToken from req object');
+        // destructure --> any subsequent middleware of route handlers has access to this
+        // so now... '/users' has access to the req.decodedToken
+        next();
+      }
+    })
+
+  } else {
+    res.status(401).json({ message: 'No token provided' });
+  }
+}
+
+function checkRole(role) {
+  return function(req, res, next) {
+    /* 
+      - checking in the protected function, if req.decodedToken exists 
+      - and also checking if the decodedToken.roles includes the role given when we invoke the function.
+    */
+    
+    if (req.decodedToken && req.decodedToken.roles.includes(role)) {
+      next();
+    } else {
+      res.status(403).json({ message: 'you shall not pass! forbidden' });
+    }
+  };
+}
 
 server.get('/', (req, res) => {
   res.status(200).json({ message: "Server running" });
 });
 
-server.get('/api/notes', (req, res) => {
+server.post('/api/login', (req, res) => {
+  const creds = req.body;
+
+  db('users')
+    .where({ username: creds.username })
+    .first()
+    .then(user => {
+      if (user && bcrypt.compareSync(creds.password, user.password)) {
+        console.log(user);
+        const token = generateToken(user);
+        // on succcess, create a new JWT with user id as subject
+        res.status(200).json({ welcome: user.username, token });
+      } else {
+        // if failure, send back correct HTTPCODE with message...
+        res.status(401).json({ message: 'You shall not pass!' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ err });
+    });
+});
+
+server.post('/api/register', (req, res) => {
+  const credentials = req.body;
+
+  const hash = bcrypt.hashSync(credentials.password, 10);
+  credentials.password = hash; // hash the password beforehand
+
+  db('users')
+    .insert(credentials)
+    .then(ids => {
+      console.log(ids);
+      const id = ids[0]; 
+      return db('users').where({ username: credentials.username }).first()
+        .then(response => {
+          console.log(response);
+          const token = generateToken(response);
+          res.status(201).json({ welcome: response.username, token});
+        })      
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
+
+server.get('/api/notes', protected, checkRole('admin'), (req, res) => {
   db('notes')
     .then(notes => {
 
