@@ -1,27 +1,38 @@
-.notes-list-wrap {
-  background: #F5CAC3;
-}
-
 h4 {
   margin: 0;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 3.8rem;
+  padding-left: 7%;
 }
 
-.notes-map {
-  height: 543px;
+.notes-list-wrap {
+  background: #F5CAC3;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.notes-map {  
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  width: 100%;
+  flex-direction: column;
+  width: 85%;
+  align-items: center;
 }
 
 .note-box {
-  width: 500px;
+  width: 50%;
+  border: 3px solid lightcoral;
+  border-radius: 20px;  
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .note-body {
-  width: 500px;
+  width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

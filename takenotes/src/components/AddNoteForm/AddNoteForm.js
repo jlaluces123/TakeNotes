@@ -1,4 +1,5 @@
 import React from 'react';
+import './AddNoteForm.css';
 
 export const AddNoteForm = props => {
 
@@ -14,7 +15,7 @@ export const AddNoteForm = props => {
 
   return (
     <div className='add-a-note-form'>
-    <h1 className='add-a-note-header'>Create New Note:</h1>
+    <h1 className='add-a-note-header'>Note Title:</h1>
       <form>
         <input
           className='title-input'
