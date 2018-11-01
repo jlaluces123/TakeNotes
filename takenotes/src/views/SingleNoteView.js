@@ -19,7 +19,7 @@ class SingleNoteView extends React.Component {
     console.log('firing inside handleDeleteNote', noteId);
     console.log(this.props, 'this.props');
     console.log(noteId, 'noteId');
-    this.props.deleteNote(noteId);
+    this.props.deleteNote(noteId);    
   }
 
   goToUpdateNoteForm = (event, id) => {

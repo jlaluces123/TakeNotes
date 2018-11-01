@@ -40,7 +40,7 @@ class AddNoteView extends React.Component {
 
   handleUpdateNote = () => {
     this.props.updateNote(this.state.note)
-    this.props.history.push('/notes');    
+    this.props.history.push('/notes');       
   }
 
   render() {

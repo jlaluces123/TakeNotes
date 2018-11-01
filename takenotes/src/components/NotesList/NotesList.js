@@ -8,8 +8,8 @@ export const NotesList = props => {
       <h4>Notes</h4>
       <div className='notes-map'>
       {props.notes.map(note => (
-        <div className='note-box' key={note.id}>
-          <h3 className='note-title'onClick={() => props.history.push(`/notes/${note.id}`)}>
+        <div className='note-box' key={note.id} onClick={() => props.history.push(`/notes/${note.id}`)}>
+          <h3 className='note-title'>
             {note.title}
           </h3>
           <p className='note-body'>{note.content}</p>

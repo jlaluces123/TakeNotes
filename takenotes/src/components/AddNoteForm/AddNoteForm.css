@@ -63,3 +63,11 @@ form {
   border: none;
   border-radius: 10px;
 }
+
+.save-button:hover {
+  background-color: lightgreen;
+  padding: 20px;
+  transition: 0.3s;
+  border-bottom: 7px solid salmon;
+  color: grey;
+}

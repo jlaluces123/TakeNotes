@@ -1,0 +1,65 @@
+.hero-jpg {
+  background-image: url('../bookshelf.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 92vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-size: 1.8rem; */
+  /* color: bisque; */
+  /* font-weight: 900; */
+  opacity: 0.9;
+  /* padding-top: 70px; */
+  flex-direction: column;
+  overflow: hidden;
+}
+
+h2 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 5rem;
+  color: black;
+  background-color: #D9D0DE;
+  opacity: 0.8;
+  padding: 15px;
+  border-radius: 30px;
+  border-bottom: 10px solid black;
+  margin-bottom: 50px;
+}
+
+.hero-message {
+  display: flex;  
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;
+  font-size: 1.9rem;
+  padding-right: 80px;
+  color: black; 
+  font-weight: 500;
+  background-color: lightcoral;
+  opacity: 0.8;
+  border-radius: 50px;
+  border-bottom: 10px solid black;
+}
+
+.hero-button {
+  color: black;
+  text-decoration: none;
+  background-color: lightsalmon;
+  padding: 20px 30px;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  margin-top: 15px;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.hero-button:hover {
+  opacity: 1;
+  padding: 30px 40px;
+  transition: 0.3s;
+  border-bottom: 10px solid black;
+  font-size: 1.6rem;
+  background-color: coral;
+}

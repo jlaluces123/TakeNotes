@@ -4,8 +4,9 @@
 
 .navbar {
   display: flex;
-  height: 100px;
+  height: 60px;
   background: lightcoral;  
+  opacity: 0.7;
 }
 
 .navbar-list {
