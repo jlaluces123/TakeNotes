@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Popup from 'reactjs-popup';
+import './Note.css';
 
 export const Note = props => {
   const note = props.notesList.find(
@@ -17,12 +18,12 @@ export const Note = props => {
   return (
     <div className='single-note-wrap'>
       <nav>
-        <button className='edit-delete-button' onClick={event => {
+        <button className='edit-button' onClick={event => {
           event.preventDefault();
           props.goToUpdateNoteForm(event, note.id);
         }}
         >edit</button>        
-        <Popup trigger={<button className='edit-delete-button'>delete</button>} modal>
+        <Popup trigger={<button className='delete-button'>delete</button>} modal>
           {close => (
             <div className='open-modal'>
               <p className='modal-text'>Are you sure you want to delete this?</p>
@@ -44,7 +45,7 @@ export const Note = props => {
       {note ?
       <div className='note-div'>      
         <h3>{note.title}</h3> 
-        <p>{note.content}</p>
+        <p className='note-paragraph'>{note.content}</p>
       </div>
         
         : 

@@ -22,7 +22,7 @@ class NotesListView extends React.Component {
   };
 
   render() {
-    return this.state.notesArray.length > 0 ? <NotesList {...this.props} notes={this.state.notesArray} /> : <div className='loading'>loading...</div> ;    
+    return this.state.notesArray.length > 0 ? <NotesList {...this.props} notes={this.state.notesArray} /> : <div className='loading'>No Notes Yet! Get writing!</div> ;    
   }
 }
 
