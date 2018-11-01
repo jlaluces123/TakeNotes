@@ -36,6 +36,7 @@ class AddNoteView extends React.Component {
     e.preventDefault();    
     this.props.addNote(this.state.note);
     this.props.history.push('/notes');
+    window.location.reload();
   }
 
   handleUpdateNote = () => {
